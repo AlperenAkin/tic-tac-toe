@@ -1,25 +1,26 @@
 //function to print results when game ends
 function printGameResult(winningPlayer, cell1, cell2, cell3) {
-    document.getElementById('print') 
-            .innerHTML = "Player " + winningPlayer + " won"; 
+    document.getElementById('print').innerHTML = "Player " + winningPlayer + " won";
+    document.getElementById('print').style.opacity = 1; 
 
-        if(winningPlayer == 'X'){
-                cell1.style.color = "red"; 
-                cell2.style.color = "red"; 
-                cell3.style.color = "red";}
-
-        if(winningPlayer == '0'){
-                cell1.style.color = "blue"; 
-                cell2.style.color = "blue"; 
-                cell3.style.color = "blue";  
-            }
+    if (winningPlayer == 'X') {
+        cell1.classList.add('win-cell-x');
+        cell2.classList.add('win-cell-x');
+        cell3.classList.add('win-cell-x');
+    } else if (winningPlayer == '0') {
+        cell1.classList.add('win-cell-o');
+        cell2.classList.add('win-cell-o');
+        cell3.classList.add('win-cell-o');
+    }
+   
 
 }
 
 //clear board
 function clearBoard() { 
     location.reload(); 
-    c1 = c2 = c3 = c4 = c5 = c6 = c7 = c8 = c9 = ''; 
+    c1 = c2 = c3 = c4 = c5 = c6 = c7 = c8 = c9 = '';
+    document.getElementById('print').style.opacity = 0; 
 } 
 
 //function to close all input cells when game ends
@@ -137,7 +138,8 @@ function updateBoard() {
         (c4 == 'X' || c4 == '0') && (c5 == 'X' || c5 == '0') && (c6 == 'X' || c6 == '0') && 
         (c7 == 'X' || c7 == '0') && (c8 == 'X' || c8 == '0') && (c9 == 'X' || c9 == '0')) { 
 
-        document.getElementById('print').innerHTML = "Match Tie"; 
+        document.getElementById('print').innerHTML = "Match Tie";
+        document.getElementById('print').style.opacity = 1; 
         disableAllCells();
     } 
 
